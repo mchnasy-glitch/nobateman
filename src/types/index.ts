@@ -67,25 +67,22 @@ export interface SmsLog {
   blockedUntil?: number;
 }
 
-export interface Settings {
+  export interface Settings {
   doctorName: string;
-  
-  
-  visitFee: number;  
-
-
   specialty: string;
   phone: string;
   address: string;
-  
-  // Platform settings
-  cancellationHours?: number; // e.g. 24
-  maxBookingDays?: number; // e.g. 30
-  onlinePaymentEnabled?: boolean;
-  requireAuthForBooking?: boolean;
-  
-  smsConfig?: SmsConfig;
+  cancellationHours: number;
+  maxBookingDays: number;
+  onlinePaymentEnabled: boolean;
+  requireAuthForBooking: boolean;
+  smsConfig: {
+    templateId: string;
+    // سایر فیلدهای احتمالی
+  };
+  visitFee: number; // حتماً این خط را اضافه کن
 }
+
 
 export interface AuthResponse {
   token: string;
