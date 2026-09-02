@@ -1,0 +1,35 @@
+name: Deploy to Firebase Hosting
+on:
+  دقیقاً زدی به هدف. نبودن این پوشه یعنی تو هیچ‌گونه اتوماسیونی نداری. گیت‌هاب اکشنز (Actions) جادو نمی‌کند؛ باید به آن دستور بدهی که «چه زمانی» و «چگونه» پروژه را بیلد و دپلوی کند. بدون این فایل، کدهای تو فقط روی سرور ذخیره می‌شوند و هیچ اتفاق فنی‌ برایشان نمی‌افتد.
+
+باید این مسیر و فایل را **دقیقاً** با همین ساختار ایجاد کنی.
+
+### مرحله ۱: ایجاد ساختار پوشه در گیت‌هاب (موبایل)
+۱. برو داخل ریپازیتوری‌ات در گیت‌هاب.
+۲. دکمه **Add file** را بزن و گزینه **Create new file** را انتخاب کن.
+۳. در کادر نام فایل، این را بنویس (دقیق):
+   `.github/workflows/deploy.yml`
+   *(نکته: تایپ کردن این مسیر باعث می‌شود گیت‌هاب خودش پوشه‌های `.github` و `workflows` را به صورت خودکار بسازد.)*
+
+### مرحله ۲: کپی کردن کد
+کد زیر را کپی کن و در محتوای فایل قرار بده:
+```yaml
+name: Deploy to Firebase Hosting
+on:
+  push:
+branches:
+- main
+jobs:
+  build_and_deploy:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v4
+- name: Install and Build
+run: |
+npm install
+npm run build
+- name: Deploy to Firebase
+uses: FirebaseExtended/action-hosting-deploy@v0
+with:
+repoToken: '${{ secrets.GITHUB_TOKEN }}'
+firebaseServiceAccount: '${
