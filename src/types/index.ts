@@ -70,8 +70,8 @@ export interface SmsLog {
 export interface Settings {
   doctorName: string;
   
-  // ... سایر فیلدها
-  visitFee: number; // این خط را اضافه کن
+  
+  visitFee: number;  
 
 
   specialty: string;
