@@ -14,8 +14,6 @@ jobs:
           node-version: '20'
       - name: Install Dependencies
         run: npm install
-      - name: Verify Dependencies
-        run: npm list axios express uuid jsonwebtoken
       - name: Build Project
         run: npm run build
       - name: Deploy to Firebase
