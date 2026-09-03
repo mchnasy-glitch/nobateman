@@ -19,7 +19,7 @@
     "express": "^4.18.0",
     "framer-motion": "^10.16.0",
     "lucide-react": "^0.284.0",
-    "@jalali-js/holidays": "^1.0.0"
+    
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
